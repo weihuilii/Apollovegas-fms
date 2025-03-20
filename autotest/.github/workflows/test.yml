@@ -1,0 +1,24 @@
+name: Auto test
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.12"
+
+      - name: apt install
+        run: |
+          sudo apt-get update --fix-missing || true
+          sudo apt-get install -y python3-dev
+
+      - name: pip install
+        run: |
+          cd $GITHUB_WORKSPACE
+          pip install -r requirements.txt
+          python3 auto-test.py

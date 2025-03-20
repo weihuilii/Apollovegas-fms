@@ -57,14 +57,3 @@ class File(dict):
         """
         with open(self['file_path'], 'rb') as f:
             return f.read()
-
-# 示例用法
-if __name__ == "__main__":
-    file_path = 'test/test1.txt'
-    try:
-        file = File(file_path)
-        print("文件信息:", file)
-        content = file.fetch()
-        print("文件内容:", content[:100])  # 只打印前 100 字节，防止太长
-    except FileNotFoundError as e:
-        print(e)

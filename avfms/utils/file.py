@@ -38,10 +38,10 @@ class File(dict):
             raise FileNotFoundError(f"文件 {file_path} 不存在")
         
         self['file_path'] = file_path
-        self['size'] = _get_size(file_path)
-        self['hash'] = _get_hash(file_path)
-        self['directory'], self['filename'] = _get_path_filename(file_path)
-        self['metadata'] = _get_metadata(file_path)
+        self['size'] = _self.get_size()
+        self['hash'] = self._get_hash()
+        self['directory'], self['filename'] = self._get_path_filename()
+        self['metadata'] = self._get_metadata()
 
     def _get_size(self):
         return os.path.getsize(self['file_path'])

@@ -2,8 +2,8 @@ import os
 import hashlib
 from .logger import logger
 
-log = logger('utils::file')
-class File(dict):
+log = logger('utils.file')
+class File(object):
 
     def __get_hash(self, algorithm='sha256'):
         hash_func = hashlib.new(algorithm)

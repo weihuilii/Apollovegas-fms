@@ -5,7 +5,8 @@ class logger:
         self.module_name = module_name
     
     def __call__(self, *args, level = 'INFO'):
-        print(f'[{self.module_name}] [{datetime.datetime.now()}] [{level}] ' + ' '.join(args))
+        args = [str(arg) for arg in args]
+        print(f'[AVFMS] [{datetime.datetime.now()}] [{level}] {self.module_name} ' + ' '.join(args))
 
     def info(self, *args):
         self(*args)

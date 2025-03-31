@@ -25,9 +25,6 @@ class File(object):
         except Exception as e:
             log.error(repr(e))
 
-    def __init__(self):
-        pass
-
     def __init__(self, file_path):
         self.update(file_path)
     
